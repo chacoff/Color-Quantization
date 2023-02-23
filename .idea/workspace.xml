@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5da5ca0-7676-494f-8674-b5c86aff4001" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Color-Quantization.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Color-Quantization.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Inputs/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Inputs/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Inputs/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/bike16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/bike2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/bike32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/bike4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/bike8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/cat16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/cat2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/cat32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/cat4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/cat8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/frog16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/frog2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/frog32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/frog4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/frog8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_Outputs/results.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/color-quantization.py" beforeDir="false" afterPath="$PROJECT_DIR$/color-quantization.py" afterDir="false" />
+    <list default="true" id="a5da5ca0-7676-494f-8674-b5c86aff4001" name="Default Changelist" comment="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions">
+      <change afterPath="$PROJECT_DIR$/output.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +112,14 @@
       <updated>1570383525570</updated>
       <workItem from="1570383526953" duration="2209000" />
     </task>
+    <task id="LOCAL-00001" summary="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions">
+      <created>1677156573511</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677156573513</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -168,6 +154,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Test Inputs/3.jpg">
