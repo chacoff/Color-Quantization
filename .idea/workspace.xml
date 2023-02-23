@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5da5ca0-7676-494f-8674-b5c86aff4001" name="Default Changelist" comment="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions">
-      <change afterPath="$PROJECT_DIR$/output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="a5da5ca0-7676-494f-8674-b5c86aff4001" name="Default Changelist" comment="readme ...">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/color-quantization.py" beforeDir="false" afterPath="$PROJECT_DIR$/color-quantization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.png" beforeDir="false" afterPath="$PROJECT_DIR$/output.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +63,16 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Test Inputs" />
@@ -119,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677156573513</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="readme ...">
+      <created>1677156957027</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677156957027</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -157,7 +172,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="change PIL by openCV, removed the point selector to use grey levels as thresholds, check if the image is 1 channel only, all global variable were removed, left only the kmeans function and deleted the auxiliary functions" />
+    <MESSAGE value="readme ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="readme ..." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Test Inputs/3.jpg">
