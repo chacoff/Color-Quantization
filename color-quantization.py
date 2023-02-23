@@ -1,31 +1,13 @@
-__author__ = "Alican Safak Ozdek"
-__email__ = "safakozdek@gmail.com"
-__status__ = "Running"
-
-from PIL import Image
-from matplotlib import pyplot as plt
 import sys
 import numpy as np
-import math
-
-RUN_MODE = -1
-PATH_TO_FILE = ""
-K = -1
-IMAGE = []
-IMAGE_3D_MATRIX = []
+import cv2
+import timeit
 
 
-def kmeans_main(cluster_points):
-    # rounding pixel values and getting cluster RGB
-    centers = []
-    for i in range(len(cluster_points)):
-        cluster_points[i] = (int(math.floor(cluster_points[i][0])), int(math.floor(cluster_points[i][1])))
-        red = IMAGE_3D_MATRIX[cluster_points[i][0]][cluster_points[i][1]][0]
-        green = IMAGE_3D_MATRIX[cluster_points[i][0]][cluster_points[i][1]][1]
-        blue = IMAGE_3D_MATRIX[cluster_points[i][0]][cluster_points[i][1]][2]
-        centers.append([red, blue, green])
+def kmeans_main(**kwargs):
 
-    centers = np.array(centers)
+    centers = [[high, high, high], [low, low, low]]
+    K = len(centers)
 
     # Initializing class and distance arrays
     classes = np.zeros([IMAGE_3D_MATRIX.shape[0], IMAGE_3D_MATRIX.shape[1]], dtype=np.float64)
@@ -48,58 +30,28 @@ def kmeans_main(cluster_points):
         for j in range(IMAGE_3D_MATRIX.shape[1]):
             IMAGE_3D_MATRIX[i][j] = centers[classes[i][j]]
 
-
-def kmeans_with_click():
-    global IMAGE
-    plt.imshow(IMAGE)
-    points = plt.ginput(K, show_clicks=True)
-    points = [t[::-1] for t in points]  # reversing tuples
-    kmeans_main(points)
-
-
-def kmeans_with_random():
-    global IMAGE_3D_MATRIX
-    points = []
-    for i in range(K):
-        x = np.random.uniform(0, IMAGE_3D_MATRIX.shape[0])
-        y = np.random.uniform(0, IMAGE_3D_MATRIX.shape[1])
-        points.append((x, y))
-
-    kmeans_main(points)
-
-
-def read_image():
-    global IMAGE, IMAGE_3D_MATRIX, PATH_TO_FILE
-    IMAGE = Image.open(open(PATH_TO_FILE, 'rb'))
-    IMAGE_3D_MATRIX = np.array(IMAGE).astype(int)
-
-
-def handle_arguments():
-    global PATH_TO_FILE, K, RUN_MODE
-    PATH_TO_FILE, K, RUN_MODE = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
-
-    if K < 1:
-        sys.exit("K should be greater than 1, your K value is {}".format(K))
-
-    if RUN_MODE not in {0, 1}:
-        sys.exit("Program mode should be either 0 or 1, your value is {}".format(RUN_MODE))
-
-
-def save_image():
-    global IMAGE_3D_MATRIX
-    im = Image.fromarray(IMAGE_3D_MATRIX.astype('uint8'))
-    im.save('output.png')
+    # plt.close('all')
+    cv2.imwrite('output.png', IMAGE_3D_MATRIX)
+    # plt.imshow(IMAGE_3D_MATRIX, cmap='gray')
+    # plt.show()
 
 
 if __name__ == "__main__":
-    handle_arguments()
-    read_image()
 
-    if RUN_MODE:
-        kmeans_with_random()
-    else:
-        kmeans_with_click()
+    # Parameters
+    PATH_TO_FILE = f"Test_Inputs\\02_24.bmp"
+    high = 20  # high threshold in grey levels
+    low = 10  # low threshold in grey levels
+    ROI_start_y = 900  # ROI start point in y direction
+    ROI_region = 800  # ROI window
 
-    save_image()
+    IMAGE = cv2.imread(PATH_TO_FILE, cv2.IMREAD_UNCHANGED)
+    IMAGE = IMAGE[ROI_start_y:(ROI_start_y+ROI_region), 0:IMAGE.shape[1]]  # y:y+h, x:x+w
+    IMAGE_int = np.array(IMAGE).astype(int)
+    print(f'{IMAGE_int.shape = }')
 
-    sys.exit("Success: Output file generated!")
+    IMAGE_3D_MATRIX = cv2.merge((IMAGE_int, IMAGE_int, IMAGE_int)) if len(IMAGE_int.shape) < 3 else IMAGE_int
+    print(f'{IMAGE_3D_MATRIX.shape = }')
+
+    execution_time = timeit.timeit(f'{kmeans_main()}')
+    sys.exit(f"{1000*execution_time:0.3f} [s]")
