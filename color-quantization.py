@@ -3,8 +3,11 @@ import numpy as np
 import cv2
 import timeit
 import matplotlib.pyplot as plt
+from functools import lru_cache
+from math import sqrt
 
 
+@lru_cache()
 def kmeans_main(**kwargs):
 
     centers = [[high, high, high], [low, low, low]]
@@ -35,7 +38,7 @@ def kmeans_main(**kwargs):
     cv2.imwrite('output.png', IMAGE_3D_MATRIX)
     # plt.imshow(IMAGE_3D_MATRIX, cmap='gray')
     # plt.show()
-    return IMAGE_3D_MATRIX
+    # return IMAGE_3D_MATRIX
 
 
 def BorderDetectionCanny(border_channel, canvas):
@@ -52,16 +55,16 @@ def BorderDetectionCanny(border_channel, canvas):
     for i in range(len(contours)):
         hu = cv2.convexHull(contours[i], returnPoints=False)
         hull.append(hu)
-        plt.plot(hu)
-        plt.show()
+        # plt.plot(hu)
+        # plt.show()
 
     for j in range(len(contours)):
         filled_contour = cv2.drawContours(canvas, contours, j,  (255, 255, 255), thickness=cv2.FILLED)
 
-
     binaryfromcnt = cv2.split(filled_contour)[:3][0]  # splitting in RGB channels
 
     return binaryfromcnt
+
 
 if __name__ == "__main__":
 
@@ -82,9 +85,10 @@ if __name__ == "__main__":
     image_original = IMAGE_3D_MATRIX.copy()  # just to save it
     print(f'{IMAGE_3D_MATRIX.shape = }')
 
-    # execution_time = timeit.timeit(f'{kmeans_main()}')
-    # sys.exit(f"{1000*execution_time:0.3f} [s]")
+    execution_time = timeit.timeit(f'{kmeans_main()}') # remember, the function has to be void
+    sys.exit(f"{1000*execution_time:0.3f} [s]")
 
+    '''
     image_out = kmeans_main().astype(np.uint8)
 
     scale_percent = 60  # percent of original size
@@ -103,5 +107,7 @@ if __name__ == "__main__":
     to_show = BorderDetectionCanny(g, r)
     cv2.imshow('', to_show)
     cv2.waitKey()
+    '''
+
 
 

@@ -1,0 +1,48 @@
+cv2.imwrite('output.jpg',result)
+cv2.imshow('result',images[0])
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+
+
+def runAllSeperately():
+    images = read_images()
+    images_unchanged = read_images_unchanged()
+
+    # Parameters
+    high = 27  # high threshold in grey levels
+    mid = 22
+    low = 17  # low threshold in grey levels
+    ROI_start_y = 900  # ROI start point in y direction
+    ROI_region = 1100  # ROI window
+
+    t1 = time.time()
+    for i in range(len(images)):
+        # start = time.time()
+        image_out = kmeans_main(images_unchanged[i],high,mid,low).astype(np.uint8)
+        # end = time.time()
+        # print(f'Time taken to run kmaens_main for image {i}: {end - start}')
+        scale_percent = 60  # percent of original size
+        width = int(image_out.shape[1] * scale_percent / 100)
+        height = int(image_out.shape[0] * scale_percent / 100)
+        dim = (width, height)
+        im = cv2.resize(images[i], dim, interpolation=cv2.INTER_AREA)
+        image_out = cv2.resize(image_out, dim, interpolation=cv2.INTER_AREA)
+        # print(f"{im_ori.shape = }, {image_out.shape = }")
+        r, g, b = cv2.split(image_out)
+
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (9, 9))
+        g = cv2.morphologyEx(g, cv2.MORPH_OPEN, kernel, iterations=1)
+        # g = cv2.dilate(g, kernel, iterations=1)
+        # start = time.time()
+        to_show = BorderDetectionCanny(g,im)
+        # end = time.time()
+        # print(f'Time taken to run BorderDetectionCanny for image {i}: {end - start}')
+        # cv2.imwrite(pwd+'\out.jpg',to_show)
+        cv2.imwrite(f'C:\\Users\\masters\\Documents\\ACR_work\\my_straightness\\output\\image_out_{i}.jpg',to_show)
+    t2 = time.time()
+    print(f'Time taken to run script for all images: {t2 - t1}')
+    # print(f'{to_show.shape = }')
+    # to_show = cv2.resize(to_show,(to_show.shape[1]//2, to_show.shape[0]//2))
+    # cv2.imshow('to_show', to_show)
+    # cv2.waitKey()
